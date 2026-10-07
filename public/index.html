@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyEnglish — Abbiamo preparato una demo per te</title>
+<meta name="description" content="Abbiamo preparato una demo per te: il nuovo sito e il gestionale di EasyEnglish.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14103a;--paper:#fff8ec;--yellow:#ffd23f;--coral:#ff5c7a;--mint:#2ee6a6;--sky:#5b8cff;--display:'Bricolage Grotesque','Arial Black',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);overflow:hidden;display:grid;place-items:center;min-height:100svh}
+.blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform;pointer-events:none}
+.b1{width:46vmax;height:46vmax;background:var(--coral);top:-18vmax;left:-12vmax;animation:drift 18s ease-in-out infinite alternate}
+.b2{width:40vmax;height:40vmax;background:var(--sky);bottom:-16vmax;right:-10vmax;animation:drift 22s ease-in-out infinite alternate-reverse}
+.b3{width:26vmax;height:26vmax;background:var(--yellow);top:35%;left:55%;opacity:.28;animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(6vmax,4vmax,0) scale(1.15)}}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bubble{position:fixed;font-family:var(--display);font-weight:800;padding:.55em 1em;border-radius:22px 22px 22px 4px;color:var(--ink);font-size:clamp(.9rem,1.6vw,1.2rem);box-shadow:0 14px 40px rgba(0,0,0,.3);animation:float 7s ease-in-out infinite;opacity:0;animation-fill-mode:both}
+.bubble:nth-of-type(odd){border-radius:22px 22px 4px 22px}
+@keyframes float{0%{opacity:0;transform:translateY(24px) rotate(-3deg)}12%{opacity:1}50%{transform:translateY(-14px) rotate(3deg)}88%{opacity:1}100%{opacity:0;transform:translateY(24px) rotate(-3deg)}}
+main{position:relative;z-index:2;text-align:center;padding:clamp(1.25rem,4vw,3rem);max-width:60rem}
+.logo{display:flex;justify-content:center;align-items:center;gap:.7rem;font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em;margin-bottom:clamp(1.5rem,5vh,3rem);opacity:0;animation:rise .8s .1s cubic-bezier(.2,.8,.2,1) forwards}
+.logo svg{width:2.4rem;height:2.4rem;animation:wiggle 5s ease-in-out infinite}
+@keyframes wiggle{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-12deg)}96%{transform:rotate(10deg)}}
+.chip{display:inline-block;padding:.45rem 1rem;border:1.5px solid rgba(255,248,236,.35);border-radius:99px;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:rise .8s .25s cubic-bezier(.2,.8,.2,1) forwards;backdrop-filter:blur(6px)}
+.chip i{display:inline-block;width:.55rem;height:.55rem;background:var(--mint);border-radius:50%;margin-right:.6rem;box-shadow:0 0 0 0 var(--mint);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 .7rem transparent}}
+h1{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-.035em;font-size:clamp(2.6rem,9vw,7rem)}
+h1 .l{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .l span{display:inline-block;transform:translateY(110%);animation:slide .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .l:nth-child(1) span{animation-delay:.4s}
+h1 .l:nth-child(2) span{animation-delay:.55s;color:var(--yellow)}
+h1 .l:nth-child(3) span{animation-delay:.7s}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--coral) 62% 92%,transparent 92%);padding:0 .1em}
+@keyframes slide{to{transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.sub{font-size:clamp(1rem,2vw,1.3rem);max-width:36rem;margin:1.75rem auto 2.25rem;color:rgba(255,248,236,.82);opacity:0;animation:rise .8s 1s cubic-bezier(.2,.8,.2,1) forwards}
+.sub b{color:var(--paper)}
+.actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:rise .8s 1.15s cubic-bezier(.2,.8,.2,1) forwards}
+.btn{--bg:var(--yellow);--fg:var(--ink);display:inline-flex;align-items:center;gap:.7rem;padding:1.05rem 1.9rem;border-radius:99px;background:var(--bg);color:var(--fg);font:700 1.05rem var(--body);text-decoration:none;border:2px solid var(--bg);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;box-shadow:0 8px 0 rgba(0,0,0,.28)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 0 rgba(0,0,0,.28)}
+.btn:active{transform:translateY(4px);box-shadow:0 3px 0 rgba(0,0,0,.28)}
+.btn:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+.btn svg{width:1.2em;height:1.2em;transition:transform .25s}
+.btn:hover svg{transform:translateX(5px)}
+.btn.ghost{--bg:transparent;--fg:var(--paper);border-color:rgba(255,248,236,.45);box-shadow:none}
+.btn.ghost:hover{background:rgba(255,248,236,.1);box-shadow:none}
+.foot{position:fixed;bottom:1rem;left:0;right:0;text-align:center;font-size:.8rem;color:rgba(255,248,236,.55);z-index:2;opacity:0;animation:rise .8s 1.5s forwards}
+@media (max-width:640px){.bubble{display:none}.actions .btn{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}.bubble{display:none}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div>
+<div class="bubble" style="background:var(--yellow);top:14%;left:9%;animation-delay:1.2s">Hello! 👋</div>
+<div class="bubble" style="background:var(--mint);top:24%;right:8%;animation-delay:2.6s">Nice to meet you</div>
+<div class="bubble" style="background:var(--paper);bottom:22%;left:12%;animation-delay:4s">How are you?</div>
+<div class="bubble" style="background:var(--coral);bottom:16%;right:11%;animation-delay:5.4s;color:#fff">Let's talk!</div>
+
+<main>
+  <div class="logo" aria-label="EasyEnglish">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 6h32a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H24l-10 8v-8H8a6 6 0 0 1-6-6V12a6 6 0 0 1 6-6Z" fill="#ffd23f"/><path d="M17 14h14M17 22h10M17 30h14M17 14v16" stroke="#14103a" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg>
+    EasyEnglish
+  </div>
+  <div class="chip"><i></i>Demo riservata · EasyEnglish</div>
+  <h1 aria-label="Abbiamo preparato una demo per te">
+    <span class="l"><span>Abbiamo</span></span>
+    <span class="l"><span>preparato una</span></span>
+    <span class="l"><span><em>demo</em> per te</span></span>
+  </h1>
+  <p class="sub">Il nuovo <b>sito</b> e il <b>gestionale</b> di EasyEnglish, pensati per portarti più richieste di contatto. Entra e provali.</p>
+  <div class="actions">
+    <a class="btn" href="/site/">Entra nella demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    <a class="btn ghost" href="/admin/">Prova il gestionale</a>
+  </div>
+</main>
+<div class="foot">Demo non indicizzata · contenuti e prezzi indicativi</div>
+</body>
+</html>
