@@ -4,7 +4,8 @@ const eur = n => new Intl.NumberFormat('it-IT', { style: 'currency', currency: '
 
 const LOGO = `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 6h32a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H24l-10 8v-8H8a6 6 0 0 1-6-6V12a6 6 0 0 1 6-6Z" fill="#ffd23f"/><path d="M17 14h14M17 22h10M17 30h14M17 14v16" stroke="#14103a" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg>`;
 
-function render(c) {
+function render(c, opts = {}) {
+  const st = !!opts.static; // export statico per Netlify Drop: il modulo usa Netlify Forms
   const b = c.brand, h = c.hero;
   const marquee = ['Speak', 'Listen', 'Learn', 'Grow', 'Parla', 'Ascolta', 'Impara', 'Cresci'];
   const marqueeHtml = [...marquee, ...marquee].map(w => `<span>${esc(w)}</span><i aria-hidden="true">✦</i>`).join('');
@@ -155,7 +156,8 @@ function render(c) {
         <li><span>🕐</span>${esc(b.hours)}</li>
       </ul>
     </div>
-    <form class="form reveal" id="contact-form" novalidate>
+    <form class="form reveal" id="contact-form" novalidate${st ? ' name="contatti" method="POST" data-netlify="true" data-netlify-honeypot="website"' : ''}>
+      ${st ? '<input type="hidden" name="form-name" value="contatti">' : ''}
       <h3>Richiedi la lezione di prova</h3>
       <label>Nome e cognome<input name="name" autocomplete="name" required maxlength="120"></label>
       <div class="row">
@@ -185,7 +187,7 @@ function render(c) {
   <div class="wrap foot-in">
     <a class="brand" href="/site/">${LOGO}<span>${esc(b.name)}</span></a>
     <p>${esc(b.tagline)}</p>
-    <p class="small">© ${new Date().getFullYear()} ${esc(b.name)} · Demo · <a href="/site/privacy">Privacy</a> · <a href="/admin/">Area gestionale</a></p>
+    <p class="small">© ${new Date().getFullYear()} ${esc(b.name)} · Demo · <a href="/site/privacy">Privacy</a>${st ? '' : ' · <a href="/admin/">Area gestionale</a>'}</p>
   </div>
 </footer>
 

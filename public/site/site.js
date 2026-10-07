@@ -84,9 +84,14 @@
     }
     btn.disabled = true;
     try {
-      const body = Object.fromEntries(new FormData(form)); body.privacy = form.privacy.checked;
-      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-      const j = await r.json().catch(() => ({}));
+      let r, j = {};
+      if (form.dataset.netlify) { // export statico: Netlify Forms
+        r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
+      } else {
+        const body = Object.fromEntries(new FormData(form)); body.privacy = form.privacy.checked;
+        r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        j = await r.json().catch(() => ({}));
+      }
       if (!r.ok) throw new Error(j.error || 'Invio non riuscito, riprova.');
       form.reset(); msg.className = 'msg ok'; msg.textContent = 'Grazie! Ti risponderemo entro 48 ore. 🎉';
       if (!reduce) confetti(btn);

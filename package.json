@@ -7,6 +7,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node --disable-warning=ExperimentalWarning server/server.js",
+    "build:static": "node --disable-warning=ExperimentalWarning scripts/build-static.js",
     "seed": "node --disable-warning=ExperimentalWarning server/seed.js --reset"
   },
   "engines": {

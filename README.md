@@ -23,3 +23,9 @@ Variabili: `PORT`, `ADMIN_PASSWORD`, `SESSION_SECRET`, `DATA_DIR` (cartella del 
 - Il form del sito salva le richieste (`POST /api/contact`, con honeypot e rate limit) e le mostra in *Richieste*, da dove si convertono in clienti.
 - Testi, prezzi, FAQ e contatti del sito si modificano da *Contenuti sito* e sono pubblicati subito.
 - Testi, prezzi e informativa privacy sono segnaposto di demo; nessuna recensione inventata.
+
+## Pubblicare il solo sito su Netlify (drag & drop)
+```bash
+npm run build:static   # crea ./dist con intro + sito
+```
+Trascina la cartella `dist` (o lo zip) su https://app.netlify.com/drop. Il modulo di contatto usa **Netlify Forms** (le richieste compaiono in *Site → Forms*); il gestionale non è incluso nell'export statico.
